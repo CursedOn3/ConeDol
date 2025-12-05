@@ -1,0 +1,123 @@
+{
+  "nav": {
+    "home": "Home",
+    "movies": "Movies",
+    "tvShows": "TV Shows",
+    "myList": "My List",
+    "continueWatching": "Continue Watching",
+    "search": "Search",
+    "admin": "Admin Panel"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "signInWithGoogle": "Sign in with Google",
+    "signUpWithGoogle": "Sign up with Google",
+    "orContinueWith": "Or continue with"
+  },
+  "profile": {
+    "whoIsWatching": "Who's watching?",
+    "manageProfiles": "Manage Profiles",
+    "addProfile": "Add Profile",
+    "editProfile": "Edit Profile",
+    "deleteProfile": "Delete Profile",
+    "profileName": "Profile Name",
+    "kidsProfile": "Kids Profile",
+    "selectAvatar": "Select Avatar",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filters": "Filters",
+    "sort": "Sort",
+    "noResults": "No results found",
+    "viewMore": "View More",
+    "viewLess": "View Less"
+  },
+  "content": {
+    "play": "Play",
+    "addToList": "Add to My List",
+    "removeFromList": "Remove from My List",
+    "moreInfo": "More Info",
+    "overview": "Overview",
+    "cast": "Cast",
+    "genres": "Genres",
+    "releaseDate": "Release Date",
+    "runtime": "Runtime",
+    "rating": "Rating",
+    "seasons": "Seasons",
+    "episodes": "Episodes",
+    "similar": "Similar",
+    "recommendations": "Recommendations",
+    "trailer": "Trailer",
+    "noOverview": "No overview available"
+  },
+  "video": {
+    "changeProvider": "Change Provider",
+    "providerError": "Provider failed to load. Trying next...",
+    "allProvidersFailed": "All providers failed to load",
+    "loading": "Loading video..."
+  },
+  "watchlist": {
+    "title": "My List",
+    "empty": "Your list is empty",
+    "emptyDescription": "Add movies and TV shows to your list to watch them later",
+    "addedToList": "Added to your list",
+    "removedFromList": "Removed from your list"
+  },
+  "continueWatching": {
+    "title": "Continue Watching",
+    "empty": "Nothing to continue",
+    "emptyDescription": "Start watching something to see it here",
+    "resume": "Resume"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "content": "Content",
+    "statistics": "Statistics",
+    "addContent": "Add Content",
+    "editContent": "Edit Content",
+    "deleteContent": "Delete Content",
+    "featured": "Featured",
+    "active": "Active",
+    "inactive": "Inactive",
+    "totalUsers": "Total Users",
+    "totalContent": "Total Content",
+    "recentActivity": "Recent Activity"
+  },
+  "search": {
+    "placeholder": "Search for movies, TV shows...",
+    "results": "Search Results",
+    "noResults": "No results found for",
+    "searching": "Searching..."
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "networkError": "Network error. Please check your connection",
+    "unauthorized": "You are not authorized to access this page",
+    "notFound": "Page not found",
+    "serverError": "Server error. Please try again later"
+  }
+}
