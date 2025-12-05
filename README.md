@@ -40,7 +40,7 @@ A complete, production-ready streaming platform built with Next.js 14, TypeScrip
 <div align="center">
 
 ### Home Page
-![Home Page](https://i.postimg.cc/65fC7tFM/Screenshot-2025-01-24-162029.png)
+![alt text](image.png)
 
 ### TV Show Details
 ![TV Show Details](https://i.postimg.cc/JzDwCJc6/Screenshot-2025-01-24-162134.png)
