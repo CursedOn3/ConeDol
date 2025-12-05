@@ -2,46 +2,6 @@ import type { VideoProvider, VideoProviderConfig } from '@/types';
 
 // Video provider configurations
 export const videoProviders: Record<VideoProvider, VideoProviderConfig> = {
-  vidking: {
-    name: 'VidKing',
-    baseUrl: 'https://www.vidking.net',
-    buildUrl: (tmdbId, mediaType, season, episode) => {
-      if (mediaType === 'tv' && season && episode) {
-        return `https://www.vidking.net/embed/tv/${tmdbId}/${season}/${episode}`;
-      }
-      return `https://www.vidking.net/embed/movie/${tmdbId}`;
-    },
-  },
-  '111movies': {
-    name: '111Movies',
-    baseUrl: 'https://111movies.com',
-    buildUrl: (tmdbId, mediaType, season, episode) => {
-      if (mediaType === 'tv' && season && episode) {
-        return `https://111movies.com/embed/tv/${tmdbId}/${season}/${episode}`;
-      }
-      return `https://111movies.com/embed/movie/${tmdbId}`;
-    },
-  },
-  vidrock: {
-    name: 'VidRock',
-    baseUrl: 'https://vidrock.net',
-    buildUrl: (tmdbId, mediaType, season, episode) => {
-      if (mediaType === 'tv' && season && episode) {
-        return `https://vidrock.net/embed/tv/${tmdbId}/${season}/${episode}`;
-      }
-      return `https://vidrock.net/embed/movie/${tmdbId}`;
-    },
-  },
-  vidsrc: {
-    name: 'VidSrc',
-    baseUrl: 'https://www.vidsrc.wtf',
-    buildUrl: (tmdbId, mediaType, season, episode) => {
-      if (mediaType === 'tv' && season && episode) {
-        return `https://www.vidsrc.wtf/embed/tv/${tmdbId}/${season}/${episode}`;
-      }
-      return `https://www.vidsrc.wtf/embed/movie/${tmdbId}`;
-    },
-  },
   moviesapi: {
     name: 'MoviesAPI',
     baseUrl: 'https://w1.moviesapi.to',
@@ -92,5 +52,5 @@ export function getDefaultVideoUrl(
   season?: number,
   episode?: number
 ): string {
-  return getVideoUrl('vidsrc', tmdbId, mediaType, season, episode);
+  return getVideoUrl('moviesapi', tmdbId, mediaType, season, episode);
 }

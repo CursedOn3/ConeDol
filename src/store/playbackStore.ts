@@ -25,7 +25,7 @@ const initialState: PlaybackState = {
   duration: 0,
   volume: 1,
   isMuted: false,
-  currentProvider: 'vidsrc',
+  currentProvider: 'moviesapi',
 };
 
 export const usePlaybackStore = create<PlaybackStore>((set) => ({

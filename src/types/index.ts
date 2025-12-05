@@ -239,12 +239,7 @@ export interface CustomContent {
 }
 
 // Video Provider Types
-export type VideoProvider = 
-  | 'vidking'
-  | '111movies'
-  | 'vidrock'
-  | 'vidsrc'
-  | 'moviesapi';
+export type VideoProvider = 'moviesapi';
 
 export interface VideoProviderConfig {
   name: string;
