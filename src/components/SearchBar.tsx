@@ -14,6 +14,7 @@ export function SearchBar({ onSearch, autoFocus = false }: SearchBarProps) {
   const router = useRouter();
   const { t } = useTranslations();
   const [query, setQuery] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   // Debounce search with useCallback to prevent re-renders
   const debouncedSearch = useCallback(
@@ -21,7 +22,9 @@ export function SearchBar({ onSearch, autoFocus = false }: SearchBarProps) {
       let timeoutId: NodeJS.Timeout;
       return (searchQuery: string) => {
         clearTimeout(timeoutId);
+        setIsTyping(true);
         timeoutId = setTimeout(() => {
+          setIsTyping(false);
           if (searchQuery.trim()) {
             if (onSearch) {
               onSearch(searchQuery);
@@ -63,7 +66,13 @@ export function SearchBar({ onSearch, autoFocus = false }: SearchBarProps) {
           autoFocus={autoFocus}
           className="w-full px-12 py-4 bg-netflix-darkGray border border-netflix-gray rounded-full text-white placeholder-gray-500 focus:outline-none focus:border-white transition-all duration-200"
         />
-        <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" />
+        {isTyping ? (
+          <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+            <div className="w-5 h-5 border-2 border-netflix-red border-t-transparent rounded-full animate-spin" />
+          </div>
+        ) : (
+          <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-xl" />
+        )}
         
         {query && (
           <button
