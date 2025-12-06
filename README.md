@@ -40,13 +40,13 @@ A complete, production-ready streaming platform built with Next.js 14, TypeScrip
 <div align="center">
 
 ### Home Page
-![alt text](image.png)
+![alt text]([image.png](https://github.com/CursedOn3/CineDol/blob/main/screenshots/Screenshot%202025-12-05%20224741.png?raw=true))
 
 ### TV Show Details
-![TV Show Details](https://i.postimg.cc/JzDwCJc6/Screenshot-2025-01-24-162134.png)
+![TV Show Details]([https://i.postimg.cc/JzDwCJc6/Screenshot-2025-01-24-162134.png](https://github.com/CursedOn3/CineDol/blob/main/screenshots/Screenshot%202025-12-05%20224755.png?raw=true))
 
 ### Movie Details with Cast
-![Movie Details](https://i.postimg.cc/wBpLfxWk/Screenshot-2025-01-24-162112.png)
+![Movie Details]([https://i.postimg.cc/wBpLfxWk/Screenshot-2025-01-24-162112.png](https://github.com/CursedOn3/CineDol/blob/main/screenshots/Screenshot%202025-12-05%20224843.png?raw=true))
 
 </div>
 
