@@ -2,6 +2,36 @@ import type { VideoProvider, VideoProviderConfig } from '@/types';
 
 // Video provider configurations
 export const videoProviders: Record<VideoProvider, VideoProviderConfig> = {
+  vidsrc_to: {
+    name: 'VidSrc.to',
+    baseUrl: 'https://vidsrc.to',
+    buildUrl: (tmdbId, mediaType, season, episode) => {
+      if (mediaType === 'tv' && season && episode) {
+        return `https://vidsrc.to/embed/tv/${tmdbId}/${season}/${episode}`;
+      }
+      return `https://vidsrc.to/embed/movie/${tmdbId}`;
+    },
+  },
+  vidsrc_xyz: {
+    name: 'VidSrc.xyz',
+    baseUrl: 'https://vidsrc.xyz',
+    buildUrl: (tmdbId, mediaType, season, episode) => {
+      if (mediaType === 'tv' && season && episode) {
+        return `https://vidsrc.xyz/embed/tv/${tmdbId}/${season}/${episode}`;
+      }
+      return `https://vidsrc.xyz/embed/movie/${tmdbId}`;
+    },
+  },
+  superembed: {
+    name: 'SuperEmbed',
+    baseUrl: 'https://multiembed.mov',
+    buildUrl: (tmdbId, mediaType, season, episode) => {
+      if (mediaType === 'tv' && season && episode) {
+        return `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1&s=${season}&e=${episode}`;
+      }
+      return `https://multiembed.mov/?video_id=${tmdbId}&tmdb=1`;
+    },
+  },
   moviesapi: {
     name: 'MoviesAPI',
     baseUrl: 'https://moviesapi.club',
@@ -52,5 +82,5 @@ export function getDefaultVideoUrl(
   season?: number,
   episode?: number
 ): string {
-  return getVideoUrl('moviesapi', tmdbId, mediaType, season, episode);
+  return getVideoUrl('vidsrc_to', tmdbId, mediaType, season, episode);
 }

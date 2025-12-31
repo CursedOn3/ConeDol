@@ -239,7 +239,7 @@ export interface CustomContent {
 }
 
 // Video Provider Types
-export type VideoProvider = 'moviesapi';
+export type VideoProvider = 'vidsrc_to' | 'vidsrc_xyz' | 'superembed' | 'moviesapi';
 
 export interface VideoProviderConfig {
   name: string;

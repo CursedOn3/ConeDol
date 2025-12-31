@@ -30,11 +30,12 @@ export function VideoPlayer({
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showProviderMenu, setShowProviderMenu] = useState(false);
+  const [showNotice, setShowNotice] = useState(true);
 
   useEffect(() => {
     const allProviders = getAllVideoUrls(tmdbId, mediaType, season, episode);
     setProviders(allProviders);
-    
+
     // Find current provider index or default to 0
     const index = allProviders.findIndex((p) => p.provider === currentProvider);
     setCurrentIndex(index >= 0 ? index : 0);
@@ -47,7 +48,7 @@ export function VideoPlayer({
 
   const handleIframeError = useCallback(() => {
     setError(t('video.providerError'));
-    
+
     // Try next provider after 2 seconds
     setTimeout(() => {
       if (currentIndex < providers.length - 1) {
@@ -91,14 +92,67 @@ export function VideoPlayer({
           </div>
         )}
 
-        {error && (
-          <div className="absolute inset-0 flex items-center justify-center bg-netflix-darkGray">
-            <div className="text-center">
-              <p className="text-red-500 mb-4">{error}</p>
-              {currentIndex < providers.length - 1 && (
-                <Button onClick={() => switchProvider(currentIndex + 1)}>
-                  {t('common.retry')}
+        {/* Initial Notice - Show before playing */}
+        <AnimatePresence>
+          {showNotice && !isLoading && !error && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 flex items-center justify-center bg-black/90 backdrop-blur-sm z-40"
+            >
+              <div className="text-center max-w-md px-6 py-8 bg-netflix-darkGray/80 rounded-lg border border-netflix-gray">
+                <div className="mb-4">
+                  <svg className="w-12 h-12 mx-auto text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-white">Important Notice</h3>
+                <p className="text-sm text-gray-300 mb-6">
+                  Please change server when you are getting any error
+                </p>
+                <Button
+                  onClick={() => setShowNotice(false)}
+                  variant="primary"
+                  size="md"
+                  className="w-full"
+                >
+                  Got it, Continue
                 </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+
+        {error && (
+          <div className="absolute inset-0 flex items-center justify-center bg-netflix-darkGray z-30">
+            <div className="text-center max-w-md px-4">
+              <div className="mb-4">
+                <svg className="w-16 h-16 mx-auto text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-red-500 mb-2 font-semibold">{error}</p>
+              <p className="text-sm text-gray-400 mb-4">
+                {currentIndex < providers.length - 1
+                  ? `Trying next provider: ${providers[currentIndex + 1]?.name}...`
+                  : 'All providers have been tried.'}
+              </p>
+              {currentIndex < providers.length - 1 && (
+                <Button onClick={() => switchProvider(currentIndex + 1)} variant="primary" size="sm">
+                  Try Next Provider
+                </Button>
+              )}
+              {currentIndex >= providers.length - 1 && (
+                <div className="space-y-2">
+                  <p className="text-xs text-gray-500">
+                    This content may not be available on any provider at the moment.
+                  </p>
+                  <Button onClick={() => switchProvider(0)} variant="secondary" size="sm">
+                    Retry from First Provider
+                  </Button>
+                </div>
               )}
             </div>
           </div>
@@ -114,9 +168,16 @@ export function VideoPlayer({
         />
       </div>
 
-      {/* Provider Selector - Hidden since only one provider */}
+      {/* Provider Indicator - Always show current provider */}
+      <div className="absolute top-4 right-4 z-20">
+        <div className="bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full text-xs text-white/80 border border-white/10">
+          <span className="font-medium">{providers[currentIndex]?.name}</span>
+        </div>
+      </div>
+
+      {/* Provider Selector - Show only if multiple providers */}
       {providers.length > 1 && (
-        <div className="absolute top-4 right-4 z-20">
+        <div className="absolute top-14 right-4 z-20">
           <div className="relative">
             <Button
               variant="secondary"
@@ -141,9 +202,8 @@ export function VideoPlayer({
                     <button
                       key={provider.provider}
                       onClick={() => switchProvider(index)}
-                      className={`w-full text-left px-4 py-2 hover:bg-netflix-gray transition-colors ${
-                        index === currentIndex ? 'bg-netflix-gray' : ''
-                      }`}
+                      className={`w-full text-left px-4 py-2 hover:bg-netflix-gray transition-colors ${index === currentIndex ? 'bg-netflix-gray' : ''
+                        }`}
                     >
                       {provider.name}
                     </button>
